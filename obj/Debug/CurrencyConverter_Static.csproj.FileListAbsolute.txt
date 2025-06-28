@@ -21,3 +21,6 @@ C:\Users\Ritch\source\repos\CurrencyConverter_Static\CurrencyConverter_Static\bi
 C:\Users\Ritch\source\repos\CurrencyConverter_Static\CurrencyConverter_Static\bin\Debug\FontAwesome5.Net.xml
 C:\Users\Ritch\source\repos\CurrencyConverter_Static\CurrencyConverter_Static\obj\Debug\Currency.33544220.Up2Date
 C:\Users\Ritch\source\repos\CurrencyConverter_Static\CurrencyConverter_Static\obj\Debug\App.baml
+C:\Users\Ritch\source\repos\CurrencyConverter_Static\CurrencyConverter_Static\bin\Debug\Database\CurrencyConverter.mdf
+C:\Users\Ritch\source\repos\CurrencyConverter_Static\CurrencyConverter_Static\bin\Debug\Database\CurrencyConverter_log.ldf
+C:\Users\Ritch\source\repos\CurrencyConverter_Static\CurrencyConverter_Static\obj\Debug\CurrencyConverter_Static_Content.g.cs

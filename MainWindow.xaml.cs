@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -22,14 +24,48 @@ namespace CurrencyConverter_Static
     /// </summary>
     public partial class MainWindow : Window
     {
+        SqlConnection sqlConnection = new SqlConnection();
+        SqlCommand cmd = new SqlCommand();
+        SqlDataAdapter da = new SqlDataAdapter();
+
+        private int CurrencyId = 0;
+        private double FromAmount = 0;
+        private double toAmount = 0;
+        
+
         public MainWindow()
         {
             InitializeComponent();
             BindCurrency();
         }
+        public void myConnection()
+        {
+            String connection = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            sqlConnection = new SqlConnection(connection);
+            sqlConnection.Open();
+        }
         private void BindCurrency()
         {
-            DataTable dtCurrency = new DataTable();
+            myConnection();
+            DataTable dt = new DataTable();
+            cmd = new SqlCommand("select Id,CurrencyName from Currency_Master", sqlConnection);
+            cmd.CommandType = CommandType.Text;
+            da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            DataRow newRow = dt.NewRow();
+            newRow["Id"] = 0;
+            newRow["CurrencyName"] = "--Select --";
+
+            dt.Rows.InsertAt(newRow, 0);
+
+            if (dt!=null &&dt.Rows.Count > 0)
+            {
+                cmbFromCurrency.ItemsSource = dt.DefaultView;
+                cmbToCurrency.ItemsSource = dt.DefaultView;
+            }
+            sqlConnection.Close();
+            /*DataTable dtCurrency = new DataTable();
             dtCurrency.Columns.Add("Text");
             dtCurrency.Columns.Add("Value");
 
@@ -52,7 +88,7 @@ namespace CurrencyConverter_Static
             cmbToCurrency.DisplayMemberPath = "Text";
             cmbToCurrency.SelectedValuePath = "Value";
             cmbToCurrency.SelectedIndex = 0;
-
+            */
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
@@ -104,5 +140,21 @@ namespace CurrencyConverter_Static
             txtCurrency.Text = string.Empty;
         }
 
+       //Function for the master tab (tbMaster)//
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void dgvCurrency_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+        }
     }
 }
