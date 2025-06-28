@@ -65,30 +65,18 @@ namespace CurrencyConverter_Static
                 cmbToCurrency.ItemsSource = dt.DefaultView;
             }
             sqlConnection.Close();
-            /*DataTable dtCurrency = new DataTable();
-            dtCurrency.Columns.Add("Text");
-            dtCurrency.Columns.Add("Value");
 
-
-            dtCurrency.Rows.Add("--Select--", 0);
-            dtCurrency.Rows.Add("INR", 1);
-            dtCurrency.Rows.Add("USD", 75);
-            dtCurrency.Rows.Add("EUR", 85);
-            dtCurrency.Rows.Add("SAR", 20);
-            dtCurrency.Rows.Add("POUND", 5);
-            dtCurrency.Rows.Add("DEM", 43);
-
-            cmbFromCurrency.ItemsSource = dtCurrency.DefaultView;
+            
             cmbFromCurrency.DisplayMemberPath = "Text";
             cmbFromCurrency.SelectedValuePath = "Value";
             cmbFromCurrency.SelectedIndex = 0;
 
 
-            cmbToCurrency.ItemsSource = dtCurrency.DefaultView;
+            
             cmbToCurrency.DisplayMemberPath = "Text";
             cmbToCurrency.SelectedValuePath = "Value";
             cmbToCurrency.SelectedIndex = 0;
-            */
+            
         }
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
