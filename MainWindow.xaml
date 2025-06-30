@@ -154,7 +154,7 @@
                             <DataGridTemplateColumn Header="" Width="70" IsReadOnly="True" DisplayIndex="0">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Source="Images\edit-button.png" ToolTip="Edit" Width="20" Height="20"  x:Name="Revise"/>
+                                        <Image Source="Images\pen.png" ToolTip="Edit" Width="20" Height="20"  x:Name="Revise"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
@@ -162,7 +162,7 @@
                             <DataGridTemplateColumn Header="" Width="70" IsReadOnly="True" DisplayIndex="1">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Image Source="Images\delete-button.png" ToolTip="Delete" Width="20" Height="20"  x:Name="Delete"/>
+                                        <Image Source="Images\trash.png" ToolTip="Delete" Width="20" Height="20"  x:Name="Delete"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
