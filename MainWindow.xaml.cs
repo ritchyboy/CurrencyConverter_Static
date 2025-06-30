@@ -40,7 +40,7 @@ namespace CurrencyConverter_Static
         }
         public void myConnection()
         {
-            String connection = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+            String connection = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
             sqlConnection = new SqlConnection(connection);
             sqlConnection.Open();
         }
@@ -132,7 +132,25 @@ namespace CurrencyConverter_Static
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if (txtAmount.Text  == null || txtAmount.Text.Trim() == "")
+                {
+                    MessageBox.Show("Please enter the amount", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    txtAmount.Focus();
+                    return;
+                }
+                else if(txtCurrency.Text == null || txtCurrency.Text.Trim() == "")
+                {
+                    MessageBox.Show("Please enter the currency", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    txtCurrency.Focus();
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
