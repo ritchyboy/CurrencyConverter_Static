@@ -146,6 +146,36 @@ namespace CurrencyConverter_Static
                     txtCurrency.Focus();
                     return;
                 }
+                else
+                {
+                    if (CurrencyId > 0)
+                    {
+                        if (MessageBox.Show("Are you sure you want to update ?", "Information", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                        {
+                            myConnection();
+                            DataTable dt = new DataTable();
+                            cmd = new SqlCommand("UPDATE Currency_Master SET Amount = @Amount,CurrencyName = @CurrencyName WHERE Id = @Id",sqlConnection);
+                            cmd.CommandType = CommandType.Text;
+                            cmd.Parameters.AddWithValue("@Id", CurrencyId);
+                            cmd.Parameters.AddWithValue("@Amount", txtAmount);
+                            cmd.Parameters.AddWithValue("@CurrencyName",txtCurrencyName.Text);
+                            cmd.ExecuteNonQuery();
+                            sqlConnection.Close();
+
+                            MessageBox.Show("Data updated successfully", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                    }
+                    else
+                    {
+                        myConnection();
+                        cmd = new SqlCommand("INSERT INTO Currency_Master(Amount,CurrencyName) VALUES(@Amount,@CurrencyName)", sqlConnection);
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.AddWithValue("@Amount", txtAmount);
+                        cmd.Parameters.AddWithValue("@CurrencyName", txtCurrencyName.Text);
+                        cmd.ExecuteNonQuery();
+                        sqlConnection.Close();
+                    }
+                }
             }
             catch (Exception ex)
             {
